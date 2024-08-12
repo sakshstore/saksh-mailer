@@ -115,10 +115,10 @@ sakshProcessEmailsInBatches(emailAddresses, 'Batch Subject', 'Batch Message', em
     .then(() => console.log('Email processing completed'))
     .catch(error => console.error('Error processing emails:', error));
 
-    ```
+```
 
 
 
-    ### Support 
+##  Support 
 
     susheel2339 at gmail.com
