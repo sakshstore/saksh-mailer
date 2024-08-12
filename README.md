@@ -4,7 +4,7 @@ This package provides utility functions for sending and validating emails in bat
 
 ## Functions
 
-### `sendEmail(to, subject, message, config)`
+### `sakshSendEmail(to, subject, message, config)`
 
 Sends an email.
 
@@ -21,7 +21,7 @@ Sends an email.
 
 - **Returns:** `Promise<void>`
 
-### `sendEmailsBatch(emailAddresses, subject, message, configs)`
+### `sakshSendEmailsBatch(emailAddresses, subject, message, configs)`
 
 Sends multiple emails in batch using one or multiple SMTP server configurations.
 
@@ -33,7 +33,7 @@ Sends multiple emails in batch using one or multiple SMTP server configurations.
 
 - **Returns:** `Promise<void>`
 
-### `validateEmail(email)`
+### `sakshValidateEmail(email)`
 
 Validates a single email address.
 
@@ -42,7 +42,7 @@ Validates a single email address.
 
 - **Returns:** `object` - The validation result.
 
-### `validateEmailsInBatches(emailAddresses, batchSize, callback)`
+### `sakshValidateEmailsInBatches(emailAddresses, batchSize, callback)`
 
 Validates emails in batches and informs the status to a callback function.
 
@@ -53,7 +53,7 @@ Validates emails in batches and informs the status to a callback function.
 
 - **Returns:** `Promise<void>`
 
-### `processEmailsInBatches(emailAddresses, subject, message, configs, callback)`
+### `sakshProcessEmailsInBatches(emailAddresses, subject, message, configs, callback)`
 
 Processes email sending in batches and updates the status via a callback.
 
@@ -71,4 +71,54 @@ Processes email sending in batches and updates the status via a callback.
 ### Installation
 
 ```bash
-npm install nodemailer saksh-email-validator
+npm install nodemailer saksh-mailer
+
+```
+
+
+```
+const { sakshSendEmail, sakshSendEmailsBatch, sakshValidateEmailsInBatches, sakshProcessEmailsInBatches } = require('./index');
+
+// Configuration for the email service
+const emailConfig = {
+    host: 'smtp.example.com',
+    port: 587,
+    secure: false,
+    user: 'your_email@example.com',
+    pass: 'your_email_password'
+};
+
+// Sending a single email
+sakshSendEmail('recipient@example.com', 'Test Subject', 'Test Message', emailConfig)
+    .then(() => console.log('Email sent successfully'))
+    .catch(error => console.error('Error sending email:', error));
+
+// Sending multiple emails in batch
+const emailAddresses = ['recipient1@example.com', 'recipient2@example.com'];
+sakshSendEmailsBatch(emailAddresses, 'Batch Subject', 'Batch Message', emailConfig)
+    .then(() => console.log('Batch emails sent successfully'))
+    .catch(error => console.error('Error sending batch emails:', error));
+
+// Validating emails in batches
+const validateCallback = (email, validation) => {
+    console.log(`Email: ${email}, Validation: ${validation}`);
+};
+sakshValidateEmailsInBatches(emailAddresses, 50, validateCallback)
+    .then(() => console.log('Email validation completed'))
+    .catch(error => console.error('Error validating emails:', error));
+
+// Processing email sending in batches
+const processCallback = (email, status) => {
+    console.log(`Email: ${email}, Status: ${status}`);
+};
+sakshProcessEmailsInBatches(emailAddresses, 'Batch Subject', 'Batch Message', emailConfig, processCallback)
+    .then(() => console.log('Email processing completed'))
+    .catch(error => console.error('Error processing emails:', error));
+
+    ```
+
+
+
+    ### Support 
+
+    susheel2339 at gmail.com
