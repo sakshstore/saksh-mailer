@@ -1,3 +1,8 @@
+# Email Utility Package
+
+This package provides utility functions for sending and validating emails in batches using Node.js .
+
+
 Functions
 ---------
 
