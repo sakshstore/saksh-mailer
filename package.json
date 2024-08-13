@@ -1,0 +1,30 @@
+{
+  "name": "saksh-mailer",
+  "version": "1.0.1",
+  "description": "This package provides utility functions for sending and validating emails in batches using Node.js and `nodemailer`.",
+  "main": "index.js",
+  "directories": {
+    "example": "example"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "susheelhbti",
+  "keywords": [
+"Email",
+"Nodemailer",
+"SMTP",
+"Batch Email",
+"Email Validation",
+"Email Sending",
+"Node.js",
+"Email Automation",
+"Saksh Email",
+"Email Service"
+],
+  "license": "MIT",
+  "dependencies": {
+    "nodemailer": "^6.9.14",
+    "saksh-email-validator": "^2.1.0"
+  }
+}
